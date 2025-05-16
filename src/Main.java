@@ -25,22 +25,31 @@ public class Main {
         System.out.format("ArrayList<Integer> arylst contains the followig values: %s%n", arylst);
 
         // convert int[] to ArrayList using Streams
-        ArrayList<Integer> strmList = (ArrayList<Integer>) Arrays.stream(ary).boxed().collect(Collectors.toList());
+        ArrayList<Integer> strmList = (ArrayList<Integer>) Arrays.stream(ary)
+                                                                 .boxed()
+                                                                 .collect(Collectors.toList());
         System.out.format("strmList has a size of %d%n", strmList.size());
         System.out.format("List strmList: %s%n", strmList);
 
         // convert ArrayList<Integer> to an int[] array using Streams - first technique
-        int[] backAry = strmList.stream().mapToInt(i -> i).toArray();
+        int[] backAry = strmList.stream()
+                                .mapToInt(i -> i)
+                                .toArray();
         System.out.format("backAry has a length of %d%n", backAry.length);
         System.out.format("int[] backAry contains the following values: %s%n", Arrays.toString(backAry));
     
         // convert ArrayList<Integer> to an int[] array using Streams -  second technique
-        int[] aryFromList = strmList.stream().mapToInt(Integer::intValue).toArray();
+        int[] aryFromList = strmList.stream()
+                                    .mapToInt(Integer::intValue)
+                                    .toArray();
         System.out.format("aryFromList has a length of %d%n", aryFromList.length);
         System.out.format("int[] aryFromList contains the following values: %s%n", Arrays.toString(aryFromList));
     
         // convert ArrayList<Integer> to an int[] array using Streams - eliminate nulls
-        int[] notNull = strmList.stream().filter(Objects::nonNull).mapToInt(Integer::intValue).toArray();
+        int[] notNull = strmList.stream()
+                                .filter(Objects::nonNull)
+                                .mapToInt(Integer::intValue)
+                                .toArray();
         System.out.format("notNull has a length of %d%n", notNull.length);
         System.out.format("int[] notNull contains the following values: %s%n", Arrays.toString(notNull));
     
